@@ -503,9 +503,7 @@ function DataPipe({
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            count={particleCount}
-            array={positions}
-            itemSize={3}
+            args={[positions, 3]}
           />
         </bufferGeometry>
         <pointsMaterial
@@ -772,9 +770,7 @@ function AmbientParticles({ count = 120 }: { count?: number }) {
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={count}
-          array={positions}
-          itemSize={3}
+          args={[positions, 3]}
         />
       </bufferGeometry>
       <pointsMaterial
@@ -1305,11 +1301,10 @@ function Product3DCard({
         rotateY,
         transformPerspective: 800,
       }}
-      className={`group relative min-w-[240px] overflow-hidden rounded-2xl border p-4 text-start transition-colors duration-300 lg:min-w-0 ${
-        active
-          ? "border-[#071018] bg-[#071018] text-white shadow-xl shadow-slate-900/15"
-          : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-md"
-      }`}
+      className={`group relative min-w-[240px] overflow-hidden rounded-2xl border p-4 text-start transition-colors duration-300 lg:min-w-0 ${active
+        ? "border-[#071018] bg-[#071018] text-white shadow-xl shadow-slate-900/15"
+        : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-md"
+        }`}
     >
       {active && (
         <motion.span
@@ -1324,9 +1319,8 @@ function Product3DCard({
       />
       <div className="relative z-10 flex items-center gap-4">
         <span
-          className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-colors ${
-            active ? "bg-white/10" : "bg-slate-100"
-          }`}
+          className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl transition-colors ${active ? "bg-white/10" : "bg-slate-100"
+            }`}
           style={{ color: active ? product.color : undefined }}
         >
           <Icon className={`h-5 w-5 ${active ? "" : "text-slate-500"}`} />
@@ -1335,17 +1329,15 @@ function Product3DCard({
           <b className="block truncate text-[13px] font-bold">{product.name}</b>
           <span
             dir="ltr"
-            className={`mt-0.5 block text-left text-[11px] font-medium ${
-              active ? "text-slate-400" : "text-slate-500"
-            }`}
+            className={`mt-0.5 block text-left text-[11px] font-medium ${active ? "text-slate-400" : "text-slate-500"
+              }`}
           >
             {product.code}
           </span>
         </span>
         <FiChevronLeft
-          className={`h-4 w-4 shrink-0 transition-transform duration-300 ${
-            active ? "text-[#ff8a5c]" : "text-slate-300 group-hover:-translate-x-1"
-          }`}
+          className={`h-4 w-4 shrink-0 transition-transform duration-300 ${active ? "text-[#ff8a5c]" : "text-slate-300 group-hover:-translate-x-1"
+            }`}
         />
       </div>
     </motion.button>
@@ -1458,11 +1450,10 @@ export default function RFAAHomePage() {
 
       {/* HEADER */}
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "border-b border-slate-200/70 bg-[#f4f6f8]/85 backdrop-blur-xl"
-            : ""
-        }`}
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled
+          ? "border-b border-slate-200/70 bg-[#f4f6f8]/85 backdrop-blur-xl"
+          : ""
+          }`}
       >
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
           <button
